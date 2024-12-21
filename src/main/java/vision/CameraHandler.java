@@ -1,14 +1,15 @@
 package vision;
-import org.opencv.highgui.HighGui;
+
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
+import org.opencv.highgui.HighGui;
 
 public class CameraHandler {
     private VideoCapture camera;
 
     static {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);  // Automatically maps to OpenCV
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME); // Load OpenCV
     }
 
     public CameraHandler() {
@@ -31,9 +32,5 @@ public class CameraHandler {
         if (camera.isOpened()) {
             camera.release();
         }
-    }
-    public void showFrame(Mat frame) {
-        HighGui.imshow("Captured Frame", frame);
-        HighGui.waitKey(0); // Wait for a key press to close the window
     }
 }
